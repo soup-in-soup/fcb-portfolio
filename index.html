@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+
+    <title>Adeline - Junior Web Developer</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet" />
+    <style>
+      /* CSS Reset & Variables - Editorial Earth Tones */
+      :root {
+        --bg-main: #fbf9f5;
+        --bg-surface: #f4eee3;
+        --bg-card: #ffffff;
+        --text-main: #2b2621;
+        --text-muted: #6b635b;
+        --accent: #8b5a3e;
+        --accent-hover: #71462e;
+        --border-color: #ded6cb;
+        --border-dark: #3a322c;
+        --nav-bg: #2f2a26;
+        --nav-text: #eae5de;
+        --nav-hover: #d2a679;
+        --radius-sm: 4px;
+        --radius-md: 10px;
+        --radius-lg: 24px;
+        --font-display: 'Cinzel', serif;
+        --font-serif: 'Newsreader', Georgia, serif;
+        --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        font-family: var(--font-sans);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Navbar */
+      .navbar {
+        background-color: var(--nav-bg);
+        color: var(--nav-text);
+        padding: 1.25rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .nav-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-brand {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--nav-text);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-link {
+        color: var(--nav-text);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        transition: color 0.2s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--nav-hover);
+      }
+
+      /* Page Main Container */
+      main {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 4rem 1.5rem 6rem;
+      }
+
+      /* Section Headings */
+      .section-title {
+        font-family: var(--font-display);
+        font-size: 2.25rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 2.5rem;
+        color: var(--text-main);
+        letter-spacing: 0.04em;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        margin-bottom: 6rem;
+        padding-top: 1rem;
+      }
+
+      .hero-avatar-wrapper {
+        flex: 0 0 320px;
+        height: 360px;
+        border: 1px solid var(--border-dark);
+        background-color: var(--bg-surface);
+        overflow: hidden;
+        border-radius: var(--radius-sm);
+        box-shadow: 6px 6px 0px rgba(43, 38, 33, 0.08);
+      }
+
+      .hero-avatar-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .hero-content {
+        flex: 1;
+      }
+
+      .hero-name {
+        font-family: var(--font-display);
+        font-size: 3rem;
+        line-height: 1.15;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        color: var(--text-main);
+        letter-spacing: 0.02em;
+      }
+
+      .hero-job-title {
+        font-family: var(--font-serif);
+        font-size: 1.6rem;
+        font-style: italic;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+      }
+
+      .hero-intro {
+        font-family: var(--font-sans);
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: var(--text-muted);
+        margin-bottom: 2.25rem;
+        max-width: 520px;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 1.25rem;
+      }
+
+      .btn {
+        display: inline-block;
+        text-decoration: none;
+        padding: 0.85rem 1.75rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        border-radius: var(--radius-sm);
+        transition: all 0.2s ease;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .btn-primary {
+        background-color: var(--border-dark);
+        color: #fbf9f5;
+        border: 1px solid var(--border-dark);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--text-main);
+        border: 1px solid var(--border-dark);
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--bg-surface);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      /* About Section */
+      .about-section {
+        margin-bottom: 6rem;
+      }
+
+      .about-container {
+        background-color: #ffffff;
+        border: 1.5px solid var(--border-dark);
+        border-radius: var(--radius-lg);
+        padding: 3.5rem 3rem;
+        min-height: 220px;
+        box-shadow: 8px 8px 0px rgba(58, 50, 44, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .about-text {
+        font-family: var(--font-serif);
+        font-size: 1.25rem;
+        line-height: 1.8;
+        color: var(--text-main);
+        text-align: center;
+        max-width: 800px;
+      }
+
+      /* Projects Section */
+      .projects-section {
+        margin-bottom: 6rem;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.75rem;
+      }
+
+      .project-card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        border-color: var(--accent);
+      }
+
+      .project-img-container {
+        width: 100%;
+        height: 200px;
+        background-color: #6d665f;
+        overflow: hidden;
+      }
+
+      .project-img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .project-card-body {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .project-title {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        color: var(--text-main);
+      }
+
+      .project-description {
+        font-family: var(--font-sans);
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex: 1;
+      }
+
+      .project-link {
+        display: inline-block;
+        align-self: flex-start;
+        background-color: #2b2621;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 0.65rem 1.25rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border-radius: var(--radius-sm);
+        transition: background-color 0.2s ease;
+      }
+
+      .project-link:hover {
+        background-color: var(--accent);
+      }
+
+      /* Skills & Tools Section */
+      .skills-section {
+        margin-bottom: 6rem;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .skills-card {
+        border: 1px solid var(--border-dark);
+        background-color: #ffffff;
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+        box-shadow: 4px 4px 0px rgba(58, 50, 44, 0.06);
+      }
+
+      .skills-card-header {
+        background-color: var(--bg-surface);
+        border-bottom: 1px solid var(--border-dark);
+        padding: 1rem 1.5rem;
+        text-align: center;
+      }
+
+      .skills-card-title {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--text-main);
+        letter-spacing: 0.04em;
+      }
+
+      .skills-list {
+        list-style: none;
+        padding: 0.5rem 0;
+      }
+
+      .skills-list li {
+        padding: 0.85rem 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 0.95rem;
+        color: var(--text-main);
+        font-weight: 500;
+      }
+
+      .skills-list li:last-child {
+        border-bottom: none;
+      }
+
+      /* Contact Section */
+      .contact-section {
+        margin-bottom: 4rem;
+      }
+
+      .contact-container {
+        background-color: #ffffff;
+        border: 1.5px solid var(--border-dark);
+        border-radius: var(--radius-lg);
+        padding: 3.5rem 2rem;
+        text-align: center;
+        box-shadow: 8px 8px 0px rgba(58, 50, 44, 0.06);
+      }
+
+      .contact-info-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      .contact-info-item {
+        font-family: var(--font-sans);
+        font-size: 1.05rem;
+        color: var(--text-main);
+      }
+
+      .contact-info-item a {
+        color: var(--accent);
+        text-decoration: underline;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
+
+      .contact-info-item a:hover {
+        color: var(--accent-hover);
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--border-dark);
+        background-color: #ffffff;
+        padding: 2rem 1.5rem;
+        text-align: center;
+      }
+
+      .footer-text {
+        font-family: var(--font-display);
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 900px) {
+        .hero-section {
+          flex-direction: column;
+          text-align: center;
+          gap: 2.5rem;
+        }
+
+        .hero-avatar-wrapper {
+          flex: 0 0 280px;
+          width: 280px;
+          height: 320px;
+        }
+
+        .hero-actions {
+          justify-content: center;
+        }
+
+        .projects-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 680px) {
+        .navbar {
+          padding: 1rem 1.25rem;
+        }
+
+        .nav-container {
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .nav-links {
+          gap: 1.25rem;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero-name {
+          font-size: 2.25rem;
+        }
+
+        .hero-avatar-wrapper {
+          width: 220px;
+          height: 260px;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .about-container,
+        .contact-container {
+          padding: 2rem 1.5rem;
+          border-radius: 16px;
+        }
+
+        .section-title {
+          font-size: 1.75rem;
+          margin-bottom: 1.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+      <div class="nav-container">
+        <!-- EDIT: NAVBAR_BRAND -->
+        <a class="nav-brand" href="#">Junior Web Developer</a>
+        <ul class="nav-links">
+          <li>
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <!-- ================= HERO SECTION ================= -->
+      <section class="hero-section" id="hero">
+        <div class="hero-avatar-wrapper">
+          <!-- EDIT: HERO_IMAGE -->
+          <img alt="Hero Portrait" src="profile.png" />
+        </div>
+        <div class="hero-content">
+          <!-- EDIT: YOUR_NAME -->
+          <h1 class="hero-name">Adeline Jolie Gomez</h1>
+          <!-- EDIT: YOUR_JOB_TITLE -->
+          <h2 class="hero-job-title">Junior Web Developer</h2>
+          <!-- EDIT: SHORT_INTRODUCTION -->
+          <p class="hero-intro">Junior Web Developer skilled in HTML, CSS, JavaScript, PHP, MySQL, and React, building responsive websites and user-friendly web applications.</p>
+          <div class="hero-actions">
+            <!-- EDIT: HERO_BUTTON_PRIMARY -->
+            <a class="btn btn-primary" href="#projects">View My Projects</a>
+            <!-- EDIT: HERO_BUTTON_SECONDARY -->
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
+      </section>
+      <!-- ================= ABOUT ME SECTION ================= -->
+      <section class="about-section" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-container">
+          <!-- EDIT: ABOUT_YOU -->
+          <p class="about-text">I’m a Junior Web Developer passionate about creating responsive, user-friendly, and functional web applications that solve real-world problems. My skills include HTML, CSS, JavaScript, PHP, MySQL, and React, with an interest in front-end and back-end development, database management, and UI/UX design.
+            I enjoy transforming ideas into practical digital solutions through clean code, thoughtful design, and continuous learning. I aim to build accessible, maintainable, and efficient websites that deliver meaningful user experiences and support business goals.
+          </p>
+        </div>
+      </section>
+      <!-- ================= PROJECTS SECTION ================= -->
+      <section class="projects-section" id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+          <!-- Project Card 1 -->
+          <div class="project-card">
+            <div class="project-img-container">
+              <!-- EDIT: PROJECT_1_IMAGE -->
+              <img alt="Project Thumbnail" src="CardZap.png" />
+            </div>
+            <div class="project-card-body">
+              <!-- EDIT: PROJECT_1_TITLE -->
+              <h3 class="project-title">CardZap: An AI-powered File Converter Tool for Interactive Learning</h3>
+              <!-- EDIT: PROJECT_1_DESCRIPTION -->
+              <p class="project-description">An AI-powered web application designed to transform learning materials into interactive flashcards.</p>
+              <!-- EDIT: PROJECT_1_LINK -->
+              <a class="project-link" href="https://card-zap.vercel.app/#/guest/create">Project Link</a>
+            </div>
+          </div>
+          <!-- Project Card 2 -->
+          <div class="project-card">
+            <div class="project-img-container">
+              <!-- EDIT: PROJECT_2_IMAGE -->
+              <img alt="Project Thumbnail" src="DocuTrack.png" />
+            </div>
+            <div class="project-card-body">
+              <!-- EDIT: PROJECT_2_TITLE -->
+              <h3 class="project-title">DocuTrack</h3>
+              <!-- EDIT: PROJECT_2_DESCRIPTION -->
+              <p class="project-description">A web-based document tracking system designed to support document routing, receiving, acceptance, and monitoring.</p>
+              <!-- EDIT: PROJECT_2_LINK -->
+              <a class="project-link" href="#" hidden>Project Link</a>
+            </div>
+          </div>
+          <!-- Project Card 3 -->
+          <div class="project-card">
+            <div class="project-img-container">
+              <!-- EDIT: PROJECT_3_IMAGE -->
+              <img alt="Project Thumbnail" src="origato.png" />
+            </div>
+            <div class="project-card-body">
+              <!-- EDIT: PROJECT_3_TITLE -->
+              <h3 class="project-title">Origato</h3>
+              <!-- EDIT: PROJECT_3_DESCRIPTION -->
+              <p class="project-description">Origato is a B2B e-commerce website designed to connect Japanese art material suppliers with businesses, schools, and organizations through a streamlined online ordering platform.</p>
+              <!-- EDIT: PROJECT_3_LINK -->
+              <a class="project-link" href="https://origato-shop.freedev.app/?fbclid=IwY2xjawU20ARleHRuA2FlbQIxMABwZG9mBWJyaWQRMWxkdlJvMXZCQVd0MTlXMW9zcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEenG28NqHlj_UK1E9dGc95rzrJ7rA0iHGk4UIqSWNGMI9VZ4q3M55jWRrTldU_aem_5wcQBu0eFsHYyOH-AZUTuQ&i=1">Project Link</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ================= SKILLS & TOOLS SECTION ================= -->
+      <section class="skills-section" id="skills">
+        <h2 class="section-title">Skills &amp; Tools</h2>
+        <div class="skills-grid">
+          <!-- Skills Card -->
+          <div class="skills-card">
+            <div class="skills-card-header">
+              <!-- EDIT: SKILLS_HEADING -->
+              <h3 class="skills-card-title">Skills</h3>
+            </div>
+            <!-- EDIT: SKILLS_LIST -->
+            <ul class="skills-list">
+              <li>Problem Solving & Analytical Thinking</li>
+              <li>Teamwork & Communication</li>
+              <li>Time Management & Organization</li>
+              <li>Adaptability & Continuous Learning</li>
+              <li>Attention to Detail & Technical Documentation</li>
+            </ul>
+          </div>
+          <!-- Tools Card -->
+          <div class="skills-card">
+            <div class="skills-card-header">
+              <!-- EDIT: TOOLS_HEADING -->
+              <h3 class="skills-card-title">Tools / Technologies</h3>
+            </div>
+            <!-- EDIT: TOOLS_LIST -->
+            <ul class="skills-list">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Bootstrap</li>
+              <li>Github</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- ================= CONTACT SECTION ================= -->
+      <section class="contact-section" id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-container">
+          <!-- EDIT: CONTACT_DETAILS -->
+          <ul class="contact-info-list">
+            <li class="contact-info-item">adelinejoliegomez@gmail.com</li>
+            <li class="contact-info-item">+63 967 352 1640</li>
+            <li class="contact-info-item">
+              <a href="#">https://www.linkedin.com/in/adeline-jolie-gomez-2053a638b/</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <!-- ================= FOOTER ================= -->
+    <footer>
+      <!-- EDIT: FOOTER -->
+      <p class="footer-text">© 2026  Adeline Jolie Gomez. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
